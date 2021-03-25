@@ -1,0 +1,52 @@
+  <html>
+  <head>
+      <title>Proyecto Mensajes</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="main.css" />
+      <script src="index.js"></script>
+  </head>
+  <body onload="getSession()" class="bg-dark">
+    <div class="main-container">
+      <div class="row ajustar">
+        <div class="col-6">
+          <p id="session">Session</p>
+          <div class="titulo">
+            <h1>Bienvenido</h1>
+          </div>
+          <div class="formulario">
+            <div class="form-group ancho-mitad">
+              <label for="nombre">Ingrese Usuario</label>
+              <br>
+              <input class="form-control" id="nombre" type="text">
+              <button id="login" href="" class="btn btn-primary mt-3">Iniciar</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 lado-izquierdo text-light">
+          <div class="titulo">
+            <h1>Registrar Usuario</h1>
+          </div>
+          <div class="formulario">
+            <div class="form-group ancho-mitad">
+              <div class="">
+                <label for="nameAdd">Ingrese Nombre</label>
+                <input class="form-control" id="nameAdd" type="text">
+              </div>
+              <div class="">
+                <label for="lastnameAdd">Ingrese Apellido</label>
+                <input class="form-control" id="lastnameAdd" type="text">
+              </div>
+              <div class="">
+                <label for="userAdd">Ingrese Usuario</label>
+                <input class="form-control" id="userAdd" type="text">
+              </div>
+              <button id="register" href="" class="btn btn-light mt-3">Registrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

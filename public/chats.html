@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="index.js"></script>
+    <title>Chats</title>
+</head>
+<!-- <body> -->
+<body onload="cargaInicial()">
+  <div class="fondo-fijo"></div>
+    <div class="chats-container bg-light container">
+        <div class="row ajustar">
+            <div class="col-4 quitar-padding">
+
+              <!--Usuario e input-->
+              <div class="cabecera-usuario">
+                <div class="name-user">
+                  <!-- <i class="fas fa-user"></i> -->
+                  <p id="user">Usuario</p>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Buscar chat">
+                </div>
+              </div>
+
+              <!--Lista de chasts-->
+              <div id="chats" class="lista">
+              </div>
+
+                <!--Modal para agrgar chat-->
+              <div class="agregar-chat">
+                <!-- <div class="container"> -->
+                  <button type="button" class="btn text-white" data-toggle="modal" data-target="#exampleModal">Agregar chat</button>
+                <!-- </div> -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Chats</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form>
+                          <div class="form-group">
+                            <label for="userChat" class="col-form-label">Ingresa el usuario de tu amigo para chatear</label>
+                            <input type="text" class="form-control" id="userChat">
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" id="addChat">Agregar Chat</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-8 col-chat">
+              <div class="cabecera-contacto">
+                <div class="name-user">
+                    <h3 id="userContact">Usuario Contacto</h3>
+                </div>
+              </div>
+                <div id="chat" class="chatPanel">
+                  <!--<img src="http://localhost:4000/files/Cotizar-1599448397750.PNG" alt="..." class="img-thumbnail w-50">-->
+                    <!--<div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-primary">mensaje</div>-->
+                </div>
+                <!-- <div>
+                  <input type="file" id="ElBryan">
+                  <button id="enviarArchivo" class="btn btn-success ml-3">→</button>
+                </div> -->
+                <div class="escribir-mensaje">
+                    <input id="escribirM" class="form-control" type="text" placeholder="Escribe un mensaje">
+                    <button id="enviar" class="btn"><i class="far fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="salir" class="btn btn-danger ml-5">Salir</button>
+</body>
+  </html>
