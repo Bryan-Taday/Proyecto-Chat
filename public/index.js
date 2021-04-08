@@ -17,9 +17,13 @@ $(function(){
         anadirChat(userChat)
     })
     $("#enviar").click(function(){
-        var mensaje = document.getElementById("escribirM").value
+        var elementoMensaje = document.getElementById("escribirM");
+        var mensaje = elementoMensaje.value;
         var id_chat_actual = sessionStorage.getItem("id_chatR_actual");
-        enviarMensaje(mensaje, id_chat_actual);
+        if(mensaje!=""){
+            enviarMensaje(mensaje, id_chat_actual);
+            elementoMensaje.value = "";
+        }
     })
     $("#enviarArchivo").click(function(){
         var archivo = document.getElementById('ElBryan')
@@ -74,6 +78,7 @@ function mostrarChats(userF){
         chats.innerHTML=etiquetas
     });
 }
+
 function mostrarmensajes(userE, userR, usuarioC){
     sessionStorage.setItem("id_chatE_actual", userE);
     sessionStorage.setItem("id_chatR_actual", userR);
@@ -88,18 +93,31 @@ function mostrarmensajes(userE, userR, usuarioC){
                 if(i.mensaje.substr(0,4)=="http"){
                     etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-light">'+'<img src="'+i.mensaje+'" alt="..." class="img-thumbnail w-50">'+'</div></div>'
                 }else{
-                    etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-light">'+i.mensaje+'</div></div>'
+                    // etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-light">'+i.mensaje+'</div></div>'
+                    etiquetas += `<div class='div-chat'>
+                                    <div class='burbuja-mensaje'>
+                                    <div class='designMensaje'></div>
+                                    <div class='mensaje'>${i.mensaje}</div>
+                                    </div>
+                                </div>`;
                 }
             }else{
                 if(i.mensaje.substr(0,4)=='http'){
                     etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-primary">'+'<img src="'+i.mensaje+'" alt="..." class="img-thumbnail w-50">'+'</div></div>'
                 }else{
-                    etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-primary">'+i.mensaje+'</div></div>'
+                    // etiquetas += '<div><div class="d-inline-flex p-2 m-2 rounded border border-secondary bg-primary">'+i.mensaje+'</div></div>'
+                    etiquetas += `<div class='div-chat-derecha'>
+                                    <div class='burbuja-mensaje-derecha'>
+                                    <div class='designMensaje-derecha'></div>
+                                    <div class='mensaje-derecha'>${i.mensaje}</div>
+                                    </div>
+                                </div>`;
                 }
             }
         }
         usuarioContacto.innerHTML=usuarioC
         mensajes.innerHTML=etiquetas
+        scrollAbajo();
     });
 }
 
@@ -138,19 +156,21 @@ function anadirUsuario(name, lastname, user){
 }
 
 function anadirChat(userChat){
-    var usuario = sessionStorage.getItem("id_user")
+    var usuario = sessionStorage.getItem("id_user");
     $.get("http://localhost:4000/user?user="+userChat, function(response){
         if(response.length > 0){
-            for(i of response){
-                if(i.user==userChat){
+            $.get(`http://localhost:4000/chat/validarChatExiste/${usuario}/${response[0].id_user}`, function(response2){
+                if(response2.length>0){
+                    alert('Ya tiene el usuario agegado en el chat')
+                }else{
                     var settings = {
-                        "url": "http://localhost:4000/chat",
+                    "url": "http://localhost:4000/chat",
                         "method": "POST",
                         "timeout": 0,
                         "headers": {
                           "Content-Type": "application/json"
                         },
-                        "data": JSON.stringify({"fk_userE":usuario,"fk_userR":i.id_user}),
+                        "data": JSON.stringify({"fk_userE":usuario,"fk_userR":response[0].id_user}),
                     };
                     $.ajax(settings).done(function (response) {
                     if(response){
@@ -161,12 +181,11 @@ function anadirChat(userChat){
                     }
                     });
                 }
-            }
+            });
         }else{
             alert("El usuario no existe")
         }
-    });
-    
+    });    
 }
 
 function limpiar(){
@@ -176,7 +195,7 @@ function limpiar(){
 }
 
 function abrirChat(user1, user2, usuario){
-    mostrarmensajes(user1, user2, usuario)
+    mostrarmensajes(user1, user2, usuario);
 }
 
 function enviarMensaje(param1, param2){
@@ -228,4 +247,9 @@ function getSession(){
     var session = document.getElementById('session');
     id = sessionStorage.getItem('id_user');
     session.innerHTML= 'id'+id;
+}
+function scrollAbajo(){
+    var objDiv = document.getElementById('chat');
+    console.log(objDiv.scrollHeight);
+    objDiv.scrollTop = objDiv.scrollHeight;
 }

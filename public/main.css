@@ -159,7 +159,7 @@ body{
 }
 
 .cabecera-contacto{
-    height: 11vh;
+    height: 5vh;
     background-color: #CCCCCC;
     padding: 5px 15px;
     border-top-right-radius: 17px;
@@ -185,8 +185,84 @@ body{
 }
 
 .chatPanel{
-    height: 77vh;
+    background-image: url('fondo-chat.jpg');
+    background-size: cover;
+    height: 83vh;
     overflow: auto;
+    padding-top: 20px;
+}
+.chatPanel::-webkit-scrollbar{
+    width: 15px;
+    background-color: #FFFFFF;
+}
+
+.chatPanel::-webkit-scrollbar-thumb {
+    background: #555555;
+    border-radius: 7px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.chatPanel::-webkit-scrollbar-thumb:hover {
+    background: #776eff;
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.chatPanel::-webkit-scrollbar-thumb:active {
+    background-color: #776edd;
+}
+
+.burbuja-mensaje{
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    background-color: #EEEEEE;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    border-bottom-left-radius: 0;
+}
+
+.burbuja-mensaje-derecha{
+    padding: 10px;
+    position: relative;
+    display: inline-block;
+    background-color: #776eff;
+    margin-bottom: 20px;
+    border-radius: 7px;
+    border-bottom-right-radius: 0;
+}
+
+.mensaje{
+    display: inline;
+}
+
+.mensaje-derecha{
+    color: white;
+    display: inline;
+}
+
+.designMensaje{
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid #EEEEEE;
+}
+
+.designMensaje-derecha{
+    position: absolute;
+    right: -10px;
+    bottom: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #776eff;
+}
+
+.div-chat{
+    margin: 0px 40px;
+}
+
+.div-chat-derecha{
+    margin: 0px 40px;
+    text-align: right;
 }
 
 #buscarU{
@@ -198,4 +274,15 @@ body{
     position: absolute;
     bottom: 25px;
     right: 25px;
+}
+
+.luna {
+    width: 100px;
+    height: 100px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    -moz-box-shadow: 30px 10px 0 #d9534f;
+    -webkit-box-shadow: 30px 10px 0 #d9534f;
+    box-shadow: 30px 10px 0 #d9534f;
 }

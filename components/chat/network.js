@@ -22,6 +22,16 @@ router.get('/:userId', function(req, res) {
         .catch(((error) => {
             response.error(req, res, 'Unexpected error.', 500, error)
         }))
-})
+});
+
+router.get('/validarChatExiste/:userId/:userId2', function(req, res) {
+    controller.getChatExiste(req.params.userId, req.params.userId2)
+        .then((data) => {
+            response.success(req, res, data, 200)
+        })
+        .catch(((error) => {
+            response.error(req, res, 'Unexpected error.', 500, error)
+        }))
+});
 
 module.exports = router

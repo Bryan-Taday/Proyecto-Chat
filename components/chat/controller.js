@@ -11,13 +11,20 @@ function addChat( param1, param2 ) {
     })
 }
 
-function getChats( userId ) {
+function getChats( userId) {
     return new Promise((resolve, reject) => {
         resolve(storage.get(userId))
     })
 }
 
+function getChatExiste( userId, userId2 ) {
+    return new Promise((resolve, reject) => {
+        resolve(storage.get2(userId, userId2))
+    })
+}
+
 module.exports = {
     addChat,
-    getChats
+    getChats,
+    getChatExiste
 }

@@ -13,7 +13,15 @@ async function getChats( userId ) {
     return resultados.rows;
 }
 
+async function getChatExiste( userId, userId2 ) {
+    //sentencia = 'SELECT name, lastname, id_chat FROM tbl_chats c INNER JOIN tbl_users u ON c."user_R" = u.id_user where c."user_E"='+userId+' ;';
+    sentencia = `select * from tbl_chats where "fk_userE"=${userId} and "fk_userR"=${userId2}`;
+    const resultados = await conexion.query(sentencia)
+    return resultados.rows;
+}
+
 module.exports = {
     add: addChat,
     get: getChats,
+    get2: getChatExiste
 }
